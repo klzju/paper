@@ -9,10 +9,10 @@
 - [ ] 学习python编程技能&nbsp; &emsp;
 [基于python深度学习]https://courses.d2l.ai/zh-v2/
 - [ ] 学习英文论文撰写
-- [ ] [24年11月](record/202411/index.md)
+- [ ] [当前24年11月](record/202411/index.md)
+- [ ] [论文总体情况](record/整体汇总情况.md)
 
-
-- [ ] # [论文阅读](paper/index.md)
+- [ ] # [论文阅读](record/整体汇总情况.md)
 ## 1. 简况
 ## 2. 存在问题
 
@@ -20,7 +20,7 @@
 
 # coding
 
-- [ ] 待办示例
+- [ ] markdown是否可以获取当前时间
 - [X] 完成示例
 
 
