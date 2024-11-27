@@ -180,7 +180,7 @@ Fingerprinting (SWF))
     * [Jiahai Yang](https://nmgroup.tsinghua.edu.cn/yjh/)
     * [Chao Zhang](https://netsec.ccert.edu.cn/chs/people/chaoz/)
     * [Haixin Duan](http://netsec.ccert.edu.cn/people/duanhx/)
-    * [Qi Li](https://www.insc.tsinghua.edu.cn/info/1157/2851.htm)
+    * [Qi Li](https://www.insc.tsinghua.edu.cn/info/1157/2851.htm)[11.26] Rezaei和Liu - 2019 - Deep Learning for Encrypted Traffic Classification An Overv
     * [Jianjun Chen](https://www.jianjunchen.com/)
     * [Dan Li](https://www.cs.tsinghua.edu.cn/info/1126/3948.htm)
 * Chinese Academy of Sciences/China

@@ -7,6 +7,7 @@
 - [ ] 学习markdown使用方法&emsp;
 [markdown教程]https://blog.csdn.net/southink/article/details/119297952)
 - [ ] 学习python编程技能&nbsp; &emsp;
+- [ ] 熟悉SCAPY等抓包工具使用
 - [基于python深度学习]https://courses.d2l.ai/zh-v2/ <BR>
 - [主流的机器学习算法进行公式推导实现]https://github.com/jindongwang/ML_Notes.git
 - [ ] 学习英文论文撰写
