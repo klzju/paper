@@ -17,9 +17,9 @@
 \usepackage{amsmath}
 %zhichizhongwen
 \usepackage{xeCJK}  % 支持中文
-\setCJKmainfont{Noto Sans CJK SC}  % 设置中文字体
-\setmainfont{Times New Roman}  % 设置英文字体
-\usepackage[hmargin=1.5cm, top=1.5cm, bottom=1.5cm]{geometry}
+% 设置中文和西文的字体
+\setCJKmainfont{Microsoft YaHei}
+\setmainfont{Times New Roman}
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{siunitx}
@@ -41,8 +41,6 @@
 \usepackage{amsmath}
 \usepackage{array}
 \usepackage[backend=biber, maxbibnames=5, minbibnames=3, style=numeric-comp, sorting=none, url=false, isbn=false, doi=false]{biblatex}
-\addbibresource{biblio.bib}
-
 \usepackage{xpatch}
 \renewbibmacro{in:}{}
 \DeclareFieldFormat{pages}{#1}
@@ -103,7 +101,7 @@
 	Summary of Research Achievements %% Put your title here
 }
 
-\author[1,*]{konglei}
+\author[1,*]{XXX}
 \affil[1]{Computer Science and Technology, Zhejiang University, Hangzhou, China}
 \def \corremail{12421094@zju.edu.cn} % give your email here
 
@@ -114,13 +112,18 @@
 \begin{document}
 \maketitle % DO NOT REMOVE THIS LINE
 \begin{abstract}
-	这篇文章主要用来梳理我的研究成果和思路想法，这句话为了证明本文档可以支持中文！ % 中文内容
+	这篇文章主要用来梳理我的研究成果和思路想法,这句话为了证明本文档可以支持中文！% 中文内容
 	Your abstract text goes here. The abstract should be between 150 to 300 words and should provide a concise overview of the problem, methodology, main results, and conclusions.
 \end{abstract}
 
 
-\section{reading}
-An encrypted network video stream dataset
+\section{to-do}
+
+
+\subsection{database}
+Exploring QUIC Dynamics: A Large-Scale Dataset for  Encrypted Traffic Analysis,待论文录取后数据集公开
+
+
 
 \subsection{A novel QUIC traffic classifier based on convolutional neural networks}
 
@@ -161,9 +164,8 @@ He, Y., et al. (2024). "Adapting Traffic Analysis for Evolving QUIC Versions." J
 \section{Video Datasets}
 
 1、An Encrypted Network Video Stream.
-
 Available online 22 June 2023 	~
-\href{file://media/kl/7c5ed3c9-49bd-46de-bbdd-976fbc893c6d/database/envsds}{the local storage path} ~
+\href{file://D:/database/envsds/envsds.zip}{the local storage path} ~
 \href{https://zenodo.org/records/8039729/files/envsds.zip?download=1}{The url that I downloaded the database}
 author：捷克理工大学信息技术学院\\
 the structure is showed in the figure \ref{fig:database1}.
@@ -179,6 +181,7 @@ the structure is showed in the figure \ref{fig:database1}.
 
 
 \section{QUIC}
+\subsection{QUIC protocol}
 
 One of QUIC’s main features is a fast connection establishment: In the ideal case,  when cached information of a prior connection is available, it does not even take a single  round-trip (0-RTT) to send encrypted application data. Yet, in the worst case (without  prior connections as in our measurements), QUIC needs at least three round-trips as  shown in Figure \ref{fig:quic1} and explained next.
 
@@ -193,6 +196,27 @@ One of QUIC’s main features is a fast connection establishment: In the ideal c
 \end{figure}
 
 Clients initiate a connection using a Client Hello (CHLO)(1) including the QUIC  version it desires to use. In case the server does not support this version, it may send  a version negotiation packet (2) enabling the client to choose from a list of supported  versions for a second try. We will utilize packet (1) to quickly probe for QUIC-capable  hosts with only a single packet exchange and analyze their supported versions provided  in (2). Using a supported version, the client may advance in the handshake by sending  another CHLO (3), without prior communication, it does not possess enough information  about the server to establish a valid connection. The server supplies the necessary  information (4), in one or multiple exchanges (i.e., (3) and (4) may be repeated until all  required data is available). In these step(s), the client will be given a signed server config  (SCFG) including supported ciphers, key exchange algorithms and their public values,  and among other things the certificates authenticating the host. We will utilize these  information to analyze the server-provided certificates. With this information, the client  can issue another CHLO (5) including enough information to establish a connection, the  client may even send encrypted data following the CHLO which depicts the optimal case  for a 0-RTT connection establishment. Following the CHLO, the server acknowledges (6)  the successful connection establishment with a Server Hello (SHLO), containing further  key/value-pairs enabling to fully utilize the connection. from [A First Look at QUIC in the Wild]
+
+
+\subsection{特点}
+
+加密性：QUIC 使用了 TLS 1.3 进行端到端加密，这意味着所有的数据包都经过加密处理，流量特征在网络中难以直接进行内容分析。
+
+基于 UDP：QUIC 基于 UDP 协议进行传输，绕过了传统的 TCP 流量分析方法。
+
+流量混淆：QUIC 流量在传输过程中具有较高的混淆性，尤其是通过 TLS 1.3 加密的传输数据，使得基于传统的端口号、协议类型等特征进行分类变得更加困难。
+
+\subsection{挑战}
+
+流量特征不明显：由于 QUIC 使用了加密和混淆技术，传统基于数据包内容（如协议字段、端口号等）的方法无法有效地识别 QUIC 流量。
+TLS 加密头的变化：虽然 QUIC 使用了 TLS 1.3 协议进行加密，但其协议头结构与传统的 HTTPS 协议相比有所不同，导致加密流量识别变得更加复杂。
+UDP 的多路径特性：QUIC 支持多路径传输（multipath），这意味着同一会话的数据包可以通过不同的路径发送，进一步增加了流量分析的复杂度。
+
+
+
+
+
+
 
 
 \section{Deep Packet Inspection (DPI) Challenges}
